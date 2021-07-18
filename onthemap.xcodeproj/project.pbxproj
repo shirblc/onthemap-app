@@ -16,6 +16,7 @@
 		01A5CC5126A4B3B400DA1886 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A5CC4F26A4B3B400DA1886 /* LaunchScreen.storyboard */; };
 		01A5CC5C26A4B3B600DA1886 /* onthemapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC5B26A4B3B600DA1886 /* onthemapTests.swift */; };
 		01A5CC6726A4B3B600DA1886 /* onthemapUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC6626A4B3B600DA1886 /* onthemapUITests.swift */; };
+		01A5CC7D26A4B52000DA1886 /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC7C26A4B52000DA1886 /* StudentInformation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		01A5CC6226A4B3B600DA1886 /* onthemapUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = onthemapUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A5CC6626A4B3B600DA1886 /* onthemapUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onthemapUITests.swift; sourceTree = "<group>"; };
 		01A5CC6826A4B3B600DA1886 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		01A5CC7C26A4B52000DA1886 /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,8 @@
 		01A5CC4026A4B39F00DA1886 /* onthemap */ = {
 			isa = PBXGroup;
 			children = (
+				01A5CC7826A4B3E500DA1886 /* View Controllers */,
+				01A5CC7726A4B3DE00DA1886 /* Models */,
 				01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */,
 				01A5CC4326A4B39F00DA1886 /* SceneDelegate.swift */,
 				01A5CC4526A4B39F00DA1886 /* ViewController.swift */,
@@ -129,6 +133,21 @@
 				01A5CC6826A4B3B600DA1886 /* Info.plist */,
 			);
 			path = onthemapUITests;
+			sourceTree = "<group>";
+		};
+		01A5CC7726A4B3DE00DA1886 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				01A5CC7C26A4B52000DA1886 /* StudentInformation.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		01A5CC7826A4B3E500DA1886 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -264,6 +283,7 @@
 				01A5CC4626A4B39F00DA1886 /* ViewController.swift in Sources */,
 				01A5CC4C26A4B39F00DA1886 /* onthemap.xcdatamodeld in Sources */,
 				01A5CC4226A4B39F00DA1886 /* AppDelegate.swift in Sources */,
+				01A5CC7D26A4B52000DA1886 /* StudentInformation.swift in Sources */,
 				01A5CC4426A4B39F00DA1886 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
