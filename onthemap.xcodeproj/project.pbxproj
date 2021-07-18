@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		01A5CC4226A4B39F00DA1886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */; };
 		01A5CC4426A4B39F00DA1886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4326A4B39F00DA1886 /* SceneDelegate.swift */; };
-		01A5CC4626A4B39F00DA1886 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4526A4B39F00DA1886 /* ViewController.swift */; };
+		01A5CC4626A4B39F00DA1886 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4526A4B39F00DA1886 /* LoginViewController.swift */; };
 		01A5CC4926A4B39F00DA1886 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 01A5CC4726A4B39F00DA1886 /* Main.storyboard */; };
 		01A5CC4C26A4B39F00DA1886 /* onthemap.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4A26A4B39F00DA1886 /* onthemap.xcdatamodeld */; };
 		01A5CC4E26A4B3B400DA1886 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 01A5CC4D26A4B3B400DA1886 /* Assets.xcassets */; };
@@ -40,7 +40,7 @@
 		01A5CC3E26A4B39F00DA1886 /* onthemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onthemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A5CC4326A4B39F00DA1886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		01A5CC4526A4B39F00DA1886 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		01A5CC4526A4B39F00DA1886 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		01A5CC4826A4B39F00DA1886 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		01A5CC4B26A4B39F00DA1886 /* onthemap.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = onthemap.xcdatamodel; sourceTree = "<group>"; };
 		01A5CC4D26A4B3B400DA1886 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -103,11 +103,10 @@
 		01A5CC4026A4B39F00DA1886 /* onthemap */ = {
 			isa = PBXGroup;
 			children = (
-				01A5CC7826A4B3E500DA1886 /* View Controllers */,
+				01A5CC7826A4B3E500DA1886 /* Controllers */,
 				01A5CC7726A4B3DE00DA1886 /* Models */,
 				01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */,
 				01A5CC4326A4B39F00DA1886 /* SceneDelegate.swift */,
-				01A5CC4526A4B39F00DA1886 /* ViewController.swift */,
 				01A5CC4726A4B39F00DA1886 /* Main.storyboard */,
 				01A5CC4D26A4B3B400DA1886 /* Assets.xcassets */,
 				01A5CC4F26A4B3B400DA1886 /* LaunchScreen.storyboard */,
@@ -143,11 +142,12 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		01A5CC7826A4B3E500DA1886 /* View Controllers */ = {
+		01A5CC7826A4B3E500DA1886 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				01A5CC4526A4B39F00DA1886 /* LoginViewController.swift */,
 			);
-			name = "View Controllers";
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -280,7 +280,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01A5CC4626A4B39F00DA1886 /* ViewController.swift in Sources */,
+				01A5CC4626A4B39F00DA1886 /* LoginViewController.swift in Sources */,
 				01A5CC4C26A4B39F00DA1886 /* onthemap.xcdatamodeld in Sources */,
 				01A5CC4226A4B39F00DA1886 /* AppDelegate.swift in Sources */,
 				01A5CC7D26A4B52000DA1886 /* StudentInformation.swift in Sources */,
