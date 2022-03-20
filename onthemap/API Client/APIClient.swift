@@ -32,8 +32,22 @@ class APIClient {
         let requestUrlComponents = endpoint.requestUrl
         
         // encode the URL and make sure it's a valid one
-        if let requestUrlComponents = requestUrlComponents, let requestUrl = requestUrlComponents.url {
-                return URLRequest(url: requestUrl)
+        if let requestUrlComponents = requestUrlComponents, let url = requestUrlComponents.url {
+            var urlRequest = URLRequest(url: url)
+            
+            // Set the HTTP method according to the request type
+            switch(endpoint) {
+            case .LogIn, .CreateStudentLocation:
+                urlRequest.httpMethod = "POST"
+            case .LogOut:
+                urlRequest.httpMethod = "DELETE"
+            case .UpdateLocation:
+                urlRequest.httpMethod = "PUT"
+            default:
+                urlRequest.httpMethod = "GET"
+            }
+            
+            return urlRequest
         } else {
             throw APIClientError(errorType: .URLParseError(url: "\(baseAPIUrl)\(endpoint.baseEndpoint)"))
         }
