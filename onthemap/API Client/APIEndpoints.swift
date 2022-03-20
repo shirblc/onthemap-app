@@ -11,7 +11,8 @@ let baseAPIUrl = "https://onthemap-api.udacity.com/v1"
 
 // API Endpoints
 enum apiEndpoints {
-    case Auth
+    case LogIn
+    case LogOut
     case GetUser(id: Int)
     case GetStudentLocation(limit: Int?, skip: Int?, order: String?, uniqueKey: String?)
     case CreateStudentLocation
@@ -23,7 +24,7 @@ extension apiEndpoints {
     var baseEndpoint: String {
         switch(self) {
         // Authentication endpoint
-        case .Auth:
+        case .LogIn, .LogOut:
             return "/session"
         // Getting a user
         case .GetUser(let id):
