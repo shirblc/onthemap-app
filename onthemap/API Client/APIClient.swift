@@ -13,19 +13,33 @@ struct APIClientError: Error {
     
     enum ErrorType {
         case URLParseError(url: String)
+        case RequestError
+        case HTTPError(code: Int, message: String)
     }
     
     var errorMessage: String {
         switch(self.errorType) {
         case .URLParseError(let url):
             return "Failed to parse the given URL: \(url)"
+        case .RequestError:
+            return "There was an error sending the request"
+        case .HTTPError(let code, let message):
+            return "\(code) Error: \(message)"
         }
     }
 }
 
 extension APIClientError: LocalizedError {}
 
+typealias httpHandler = (Data?, URLResponse?, Error?) -> Void
+
 class APIClient {
+    var urlSession: URLSession
+    
+    init() {
+        self.urlSession = URLSession.shared
+    }
+    
     // getUrlRequest
     // Gets the URLRequest object
     func getUrlRequest(endpoint: apiEndpoints) throws -> URLRequest {
@@ -52,5 +66,12 @@ class APIClient {
         }
         
         return urlRequest
+    }
+    
+    // executeDataTask
+    // Executes a network request
+    func executeDataTask(url: URLRequest, handler: @escaping httpHandler) {
+        let getTask = self.urlSession.dataTask(with: url, completionHandler: handler)
+        getTask.resume()
     }
 }
