@@ -18,24 +18,24 @@ struct APIClientError: Error {
     var errorMessage: String {
         switch(self.errorType) {
         case .URLParseError(let url):
-            return "The given url is invalid: \(url)"
+            return "Failed to parse the given URL: \(url)"
         }
     }
 }
 
+extension APIClientError: LocalizedError {}
+
 class APIClient {
-    let apiBase = "https://onthemap-api.udacity.com/v1"
-    
     // getUrlRequest
     // Gets the URLRequest object
     func getUrlRequest(endpoint: apiEndpoints) throws -> URLRequest {
-        let strUrl = self.apiBase + endpoint.endpoint
+        let requestUrlComponents = endpoint.requestUrl
         
         // encode the URL and make sure it's a valid one
-        if let requestUrl = URL(string: strUrl) {
-            return URLRequest(url: requestUrl)
+        if let requestUrlComponents = requestUrlComponents, let requestUrl = requestUrlComponents.url {
+                return URLRequest(url: requestUrl)
         } else {
-            throw APIClientError(errorType: .URLParseError(url: strUrl))
+            throw APIClientError(errorType: .URLParseError(url: "\(baseAPIUrl)\(endpoint.baseEndpoint)"))
         }
     }
 }

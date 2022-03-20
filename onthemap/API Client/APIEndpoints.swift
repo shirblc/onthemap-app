@@ -7,6 +7,8 @@
 
 import Foundation
 
+let baseAPIUrl = "https://onthemap-api.udacity.com/v1"
+
 // API Endpoints
 enum apiEndpoints {
     case Auth
@@ -18,7 +20,7 @@ enum apiEndpoints {
 
 // Returns the raw endpoint value
 extension apiEndpoints {
-    var endpoint: String {
+    var baseEndpoint: String {
         switch(self) {
         // Authentication endpoint
         case .Auth:
@@ -27,38 +29,49 @@ extension apiEndpoints {
         case .GetUser(let id):
             return "/users/\(id)"
         // Getting a location
-        case .GetStudentLocation(let limit, let skip, let order, let uniqueKey):
-            let endpointBase = "/StudentLocation"
-            var queryParams: String = ""
-            
-            // add each query param that exists
-            if let limit = limit {
-                queryParams += "limit=\(String(limit))&"
-            }
-            
-            if let skip = skip {
-                queryParams += "skip=\(String(skip))&"
-            }
-            
-            if let order = order {
-                queryParams += "order=\(order)&"
-            }
-            
-            if let uniqueKey = uniqueKey {
-                queryParams += "uniqueKey=\(uniqueKey)"
-            }
-            
-            if(queryParams.count > 0) {
-                return "\(endpointBase)?\(queryParams)"
-            } else {
-                return endpointBase
-            }
+        case .GetStudentLocation:
+            return "/StudentLocation"
         // Creating a location
         case .CreateStudentLocation:
             return "/StudentLocation"
         // Updating a location
         case .UpdateLocation(let id):
             return "/StudentLocation/\(id)"
+        }
+    }
+    
+    var requestUrl: URLComponents? {
+        switch(self) {
+        // For GET /location, append the query params and then return the URLComponents
+        case .GetStudentLocation(let limit, let skip, let order, let uniqueKey):
+            let urlStr = "\(baseAPIUrl)\(self.baseEndpoint)"
+            var url = URLComponents(string: urlStr)
+            var queryItems: Array<URLQueryItem> = []
+            
+            // add each query param that exists
+            if let limit = limit {
+                queryItems.append(URLQueryItem(name: "limit", value: String(limit)))
+            }
+            
+            if let skip = skip {
+                queryItems.append(URLQueryItem(name: "skip", value: String(skip)))
+            }
+            
+            if let order = order {
+                queryItems.append(URLQueryItem(name: "order", value: order))
+            }
+            
+            if let uniqueKey = uniqueKey {
+                queryItems.append(URLQueryItem(name: "uniqueKey", value: uniqueKey))
+            }
+            
+            url?.queryItems = queryItems
+            
+            return url
+        // For everything else, just return the URLComponents
+        default:
+            let urlStr = "\(baseAPIUrl)\(self.baseEndpoint)"
+            return URLComponents(string: urlStr)
         }
     }
 }
