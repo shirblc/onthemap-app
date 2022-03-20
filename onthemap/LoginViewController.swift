@@ -10,8 +10,13 @@ import UIKit
 class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextFIeld: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
-    
+    @IBOutlet weak var errorTextLabel: UILabel!
 
+
+    override func viewWillAppear(_ animated: Bool) {
+        self.errorTextLabel.text = ""
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
     }

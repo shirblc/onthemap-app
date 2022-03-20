@@ -47,9 +47,18 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Login"/>
                                 <connections>
-                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hum-1V-K08"/>
+                                    <action selector="login:" destination="BYZ-38-t0r" eventType="touchUpInside" id="h1m-fh-TtE"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nC9-HO-UIh">
+                                <rect key="frame" x="186" y="410" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nC9-HO-UIh" secondAttribute="height" multiplier="2:1" id="gfw-A3-LDY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -58,15 +67,19 @@
                             <constraint firstItem="hQx-93-tHh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="2cj-Ak-3Ft"/>
                             <constraint firstItem="VfJ-q8-cA8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4H5-0Y-LP6"/>
                             <constraint firstItem="BwN-AD-5Kf" firstAttribute="top" secondItem="VfJ-q8-cA8" secondAttribute="bottom" constant="24" id="Npr-bs-MQu"/>
+                            <constraint firstItem="nC9-HO-UIh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Zya-zg-MHl"/>
                             <constraint firstItem="BwN-AD-5Kf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cDx-n3-310"/>
                             <constraint firstItem="eEL-XF-cxj" firstAttribute="top" secondItem="BwN-AD-5Kf" secondAttribute="bottom" constant="24" id="igY-fD-1j2"/>
                             <constraint firstItem="eEL-XF-cxj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kY6-n8-5Al"/>
                             <constraint firstItem="hQx-93-tHh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pQp-cp-An3"/>
+                            <constraint firstItem="nC9-HO-UIh" firstAttribute="top" secondItem="eEL-XF-cxj" secondAttribute="bottom" constant="69" id="yaM-jX-u0b"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="passwordTextField" destination="BwN-AD-5Kf" id="cLb-HO-o9p"/>
-                        <outlet property="usernameTextFIeld" destination="VfJ-q8-cA8" id="6KN-CJ-jPw"/>
+                        <outlet property="errorText" destination="nC9-HO-UIh" id="Mae-4L-4Sz"/>
+                        <outlet property="errorTextLabel" destination="nC9-HO-UIh" id="J8G-CL-BdA"/>
+                        <outlet property="passwordTextField" destination="BwN-AD-5Kf" id="oYO-fp-7TS"/>
+                        <outlet property="usernameTextFIeld" destination="VfJ-q8-cA8" id="qnl-iE-wbo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
