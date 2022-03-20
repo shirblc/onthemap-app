@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		010C646427D5302400CC708A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010C646327D5302400CC708A /* APIClient.swift */; };
+		018CB72327E7658A00B17F7E /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018CB72227E7658A00B17F7E /* APIEndpoints.swift */; };
 		01A5CC4226A4B39F00DA1886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */; };
 		01A5CC4426A4B39F00DA1886 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4326A4B39F00DA1886 /* SceneDelegate.swift */; };
 		01A5CC4626A4B39F00DA1886 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4526A4B39F00DA1886 /* LoginViewController.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		010C646327D5302400CC708A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		018CB72227E7658A00B17F7E /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		01A5CC3E26A4B39F00DA1886 /* onthemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onthemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		01A5CC4326A4B39F00DA1886 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -80,6 +84,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		010C646227D52FFC00CC708A /* API Client */ = {
+			isa = PBXGroup;
+			children = (
+				010C646327D5302400CC708A /* APIClient.swift */,
+				018CB72227E7658A00B17F7E /* APIEndpoints.swift */,
+			);
+			path = "API Client";
+			sourceTree = "<group>";
+		};
 		01A5CC3526A4B39F00DA1886 = {
 			isa = PBXGroup;
 			children = (
@@ -103,6 +116,7 @@
 		01A5CC4026A4B39F00DA1886 /* onthemap */ = {
 			isa = PBXGroup;
 			children = (
+				010C646227D52FFC00CC708A /* API Client */,
 				01A5CC7826A4B3E500DA1886 /* Controllers */,
 				01A5CC7726A4B3DE00DA1886 /* Models */,
 				01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */,
@@ -281,10 +295,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				01A5CC4626A4B39F00DA1886 /* LoginViewController.swift in Sources */,
+				018CB72327E7658A00B17F7E /* APIEndpoints.swift in Sources */,
 				01A5CC4C26A4B39F00DA1886 /* onthemap.xcdatamodeld in Sources */,
 				01A5CC4226A4B39F00DA1886 /* AppDelegate.swift in Sources */,
 				01A5CC7D26A4B52000DA1886 /* StudentInformation.swift in Sources */,
 				01A5CC4426A4B39F00DA1886 /* SceneDelegate.swift in Sources */,
+				010C646427D5302400CC708A /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
