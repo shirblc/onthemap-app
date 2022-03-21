@@ -31,7 +31,7 @@ struct APIClientError: Error {
 
 extension APIClientError: LocalizedError {}
 
-typealias httpHandler = (Data?, URLResponse?, Error?) -> Void
+typealias httpHandler = (Data?, String?) -> Void
 
 class APIClient {
     var urlSession: URLSession
@@ -74,7 +74,51 @@ class APIClient {
     // executeDataTask
     // Executes a network request
     func executeDataTask(url: URLRequest, handler: @escaping httpHandler) {
-        let getTask = self.urlSession.dataTask(with: url, completionHandler: handler)
+        let getTask = self.urlSession.dataTask(with: url) { (data, response, error) in
+            // Check there's been no internal error and we got back an HTTP response
+            guard error == nil, let httpResponse = response as? HTTPURLResponse else {
+                let errorStr = self.getErrorData(responseData: data, error: error, code: nil)
+                handler(nil, errorStr)
+                return
+            }
+            
+            // Check we got back a success HTTP status code
+            guard (200...399).contains(httpResponse.statusCode) else {
+                let errorStr = self.getErrorData(responseData: data, error: error, code: httpResponse.statusCode)
+                handler(nil, errorStr)
+                return
+            }
+            
+            // If all went well, return the data
+            if let data = data {
+                handler(data, nil)
+            }
+        }
         getTask.resume()
+    }
+    
+    // getErrorData
+    // Gets the string describing the error
+    func getErrorData(responseData: Data?, error: Error?, code: Int?) -> String {
+        var errorResponse: String
+        
+        // if it's an internal error
+        if let error = error {
+            errorResponse = error.localizedDescription
+        // if it's a non-200/300 status code
+        } else if let responseData = responseData {
+            do {
+                let response = try JSONSerialization.jsonObject(with: responseData.subdata(in: 5..<responseData.count), options: []) as! [String: Any]
+                let externalServerResponse = response["error"] as! String
+                errorResponse = APIClientError(errorType: .HTTPError(code: code ?? 0, message: externalServerResponse)).errorMessage
+            } catch {
+                errorResponse = "There was a problem handling the remote server's response"
+            }
+        // otherwise
+        } else {
+            errorResponse = "An unknown error occurred"
+        }
+        
+        return errorResponse
     }
 }
