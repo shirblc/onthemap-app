@@ -65,6 +65,9 @@ class APIClient {
             urlRequest.httpMethod = "GET"
         }
         
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
+        urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
         return urlRequest
     }
     
