@@ -128,15 +128,26 @@
                     <view key="view" contentMode="scaleToFill" id="Tzv-Kt-j81">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wOY-jD-g7D">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            </mapView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="FRa-CU-mKA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="wOY-jD-g7D" firstAttribute="top" secondItem="FRa-CU-mKA" secondAttribute="top" id="RWT-SF-kGE"/>
+                            <constraint firstItem="wOY-jD-g7D" firstAttribute="bottom" secondItem="FRa-CU-mKA" secondAttribute="bottom" id="b7k-ze-Yso"/>
+                            <constraint firstItem="FRa-CU-mKA" firstAttribute="trailing" secondItem="wOY-jD-g7D" secondAttribute="trailing" id="iEP-ZE-xV0"/>
+                            <constraint firstItem="wOY-jD-g7D" firstAttribute="leading" secondItem="FRa-CU-mKA" secondAttribute="leading" id="lag-Fo-OM3"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="YaS-Bz-Heb"/>
                     <navigationItem key="navigationItem" id="6GS-oZ-5rf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7s-2m-DSR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1513" y="-485"/>
+            <point key="canvasLocation" x="1511.5942028985507" y="-485.49107142857139"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="4e9-lq-n7s">
