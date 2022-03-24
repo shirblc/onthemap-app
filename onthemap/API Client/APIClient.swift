@@ -34,10 +34,21 @@ extension APIClientError: LocalizedError {}
 typealias httpHandler = (Data?, String?) -> Void
 
 class APIClient {
+    static var currentClient: APIClient?
     var urlSession: URLSession
     
-    init() {
+    private init() {
         self.urlSession = URLSession.shared
+    }
+    
+    // shared API client
+    static var sharedClient: APIClient {
+        if let currentClient = currentClient {
+            return currentClient
+        } else {
+            currentClient = APIClient()
+            return currentClient!
+        }
     }
     
     // getUrlRequest
