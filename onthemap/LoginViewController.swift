@@ -9,8 +9,7 @@ import UIKit
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Variables & Constants
-    let apiClient = APIClient()
-    var sessionId: String?
+    let apiClient = APIClient.sharedClient
     
     // MARK: Outlets
     @IBOutlet weak var usernameTextFIeld: UITextField!
@@ -63,7 +62,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         do {
             // Get the session ID from the response, as specified in their API docs
             let response = try JSONSerialization.jsonObject(with: responseData.subdata(in: 5..<responseData.count), options: []) as! [String: [String: Any]]
-            self.sessionId = response["session"]?["id"] as? String
+            self.apiClient.userSession = response["session"]?["id"] as? String
             
             // send the user to the next view
             DispatchQueue.main.async {

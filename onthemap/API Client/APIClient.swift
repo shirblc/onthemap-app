@@ -36,6 +36,7 @@ typealias httpHandler = (Data?, String?) -> Void
 class APIClient {
     static var currentClient: APIClient?
     var urlSession: URLSession
+    var userSession: String?
     
     private init() {
         self.urlSession = URLSession.shared
@@ -78,6 +79,10 @@ class APIClient {
         
         urlRequest.addValue("application/json", forHTTPHeaderField: "Accept")
         urlRequest.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        
+        if let userSession = self.userSession {
+            urlRequest.addValue(userSession, forHTTPHeaderField: "Authorization")
+        }
         
         return urlRequest
     }
