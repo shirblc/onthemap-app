@@ -9,6 +9,8 @@ import Foundation
 import UIKit
 import MapKit
 
+let annotationViewIdentifier = "onTheMapAV"
+
 class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Variables & Constants
     let apiClient = APIClient.sharedClient
@@ -17,6 +19,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Lifecycle Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.mapView?.delegate = self
         self.fetchStudentLocations()
     }
     
@@ -78,5 +81,23 @@ class MapViewController: UIViewController, MKMapViewDelegate {
             }))
             self.present(errorAlert, animated: true, completion: nil)
         }
+    }
+    
+    // MARK: MKMapViewDelegate methods
+    // Handles creating/updating the annotations as the view changes
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationViewIdentifier)
+        
+        if annotationView == nil {
+            let userDataButton = UIButton(type: .system)
+            userDataButton.setTitle(annotation.subtitle ?? "", for: .normal)
+            annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: annotationViewIdentifier)
+            annotationView?.canShowCallout = true
+            annotationView?.detailCalloutAccessoryView = userDataButton
+        } else {
+            annotationView?.annotation = annotation
+        }
+        
+        return annotationView
     }
 }
