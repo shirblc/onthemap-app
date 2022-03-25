@@ -124,26 +124,29 @@
         <!--Map-->
         <scene sceneID="A3k-sx-ILL">
             <objects>
-                <viewController title="Map" id="OKe-uj-HzU" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController title="Map" id="OKe-uj-HzU" customClass="MapViewController" customModule="onthemap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Tzv-Kt-j81">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="wOY-jD-g7D">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="L1E-gF-AgV">
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                             </mapView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="FRa-CU-mKA"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="wOY-jD-g7D" firstAttribute="top" secondItem="FRa-CU-mKA" secondAttribute="top" id="RWT-SF-kGE"/>
-                            <constraint firstItem="wOY-jD-g7D" firstAttribute="bottom" secondItem="FRa-CU-mKA" secondAttribute="bottom" id="b7k-ze-Yso"/>
-                            <constraint firstItem="FRa-CU-mKA" firstAttribute="trailing" secondItem="wOY-jD-g7D" secondAttribute="trailing" id="iEP-ZE-xV0"/>
-                            <constraint firstItem="wOY-jD-g7D" firstAttribute="leading" secondItem="FRa-CU-mKA" secondAttribute="leading" id="lag-Fo-OM3"/>
+                            <constraint firstItem="L1E-gF-AgV" firstAttribute="leading" secondItem="FRa-CU-mKA" secondAttribute="leading" id="8Gc-LV-2x1"/>
+                            <constraint firstItem="FRa-CU-mKA" firstAttribute="trailing" secondItem="L1E-gF-AgV" secondAttribute="trailing" id="KIc-M1-lvi"/>
+                            <constraint firstItem="FRa-CU-mKA" firstAttribute="bottom" secondItem="L1E-gF-AgV" secondAttribute="bottom" id="Y1c-8C-djN"/>
+                            <constraint firstItem="L1E-gF-AgV" firstAttribute="top" secondItem="FRa-CU-mKA" secondAttribute="top" id="tTc-2c-ehq"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Map" image="map" catalog="system" id="YaS-Bz-Heb"/>
                     <navigationItem key="navigationItem" id="6GS-oZ-5rf"/>
+                    <connections>
+                        <outlet property="mapView" destination="L1E-gF-AgV" id="puJ-Rs-lpZ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="U7s-2m-DSR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
