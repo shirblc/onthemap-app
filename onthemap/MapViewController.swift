@@ -54,20 +54,20 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     }
     
     // addStudentLocationsToMap
-    // Creates the location annonation objects and adds them to the map
+    // Creates the location annotation objects and adds them to the map
     func addStudentLocationsToMap(locations: Array<StudentInformation>) {
-        var locationAnnonations: Array<MKPointAnnotation> = []
+        var locationAnnotations: Array<MKPointAnnotation> = []
 
         for studentLocation in locations {
-            let locationAnnonation = MKPointAnnotation()
-            locationAnnonation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(studentLocation.latitude), longitude: CLLocationDegrees(studentLocation.longitude))
-            locationAnnonation.title = "\(studentLocation.firstName) \(studentLocation.lastName)"
-            locationAnnonation.subtitle = studentLocation.mediaURL
-            locationAnnonations.append(locationAnnonation)
+            let locationAnnotation = MKPointAnnotation()
+            locationAnnotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(studentLocation.latitude), longitude: CLLocationDegrees(studentLocation.longitude))
+            locationAnnotation.title = "\(studentLocation.firstName) \(studentLocation.lastName)"
+            locationAnnotation.subtitle = studentLocation.mediaURL
+            locationAnnotations.append(locationAnnotation)
         }
         
         DispatchQueue.main.async {
-            self.mapView?.addAnnotations(locationAnnonations)
+            self.mapView?.addAnnotations(locationAnnotations)
         }
     }
     
