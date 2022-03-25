@@ -16,7 +16,10 @@ struct StudentInformation: Codable {
     let mediaURL: String
     let latitude: Float
     let longitude: Float
-    let createdAt: Date
-    let updatedAt: Date
-    let ACL: String
+    let createdAt: String
+    let updatedAt: String
+}
+
+struct StudentInformationArray: Codable {
+    let results: [StudentInformation]
 }
