@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		010C646427D5302400CC708A /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 010C646327D5302400CC708A /* APIClient.swift */; };
 		0149D50F27EF2C2C00764075 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149D50E27EF2C2C00764075 /* StudentListViewController.swift */; };
+		0149D51127EF850C00764075 /* StudentInformationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149D51027EF850C00764075 /* StudentInformationHandler.swift */; };
 		018CB72327E7658A00B17F7E /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018CB72227E7658A00B17F7E /* APIEndpoints.swift */; };
 		018CB72527E9073D00B17F7E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018CB72427E9073D00B17F7E /* MapViewController.swift */; };
 		01A5CC4226A4B39F00DA1886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		010C646327D5302400CC708A /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
 		0149D50E27EF2C2C00764075 /* StudentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewController.swift; sourceTree = "<group>"; };
+		0149D51027EF850C00764075 /* StudentInformationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformationHandler.swift; sourceTree = "<group>"; };
 		018CB72227E7658A00B17F7E /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		018CB72427E9073D00B17F7E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		01A5CC3E26A4B39F00DA1886 /* onthemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onthemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -156,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				01A5CC7C26A4B52000DA1886 /* StudentInformation.swift */,
+				0149D51027EF850C00764075 /* StudentInformationHandler.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -303,6 +306,7 @@
 				01A5CC4626A4B39F00DA1886 /* LoginViewController.swift in Sources */,
 				0149D50F27EF2C2C00764075 /* StudentListViewController.swift in Sources */,
 				018CB72327E7658A00B17F7E /* APIEndpoints.swift in Sources */,
+				0149D51127EF850C00764075 /* StudentInformationHandler.swift in Sources */,
 				01A5CC4C26A4B39F00DA1886 /* onthemap.xcdatamodeld in Sources */,
 				01A5CC4226A4B39F00DA1886 /* AppDelegate.swift in Sources */,
 				01A5CC7D26A4B52000DA1886 /* StudentInformation.swift in Sources */,

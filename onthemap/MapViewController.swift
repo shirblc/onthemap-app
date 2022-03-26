@@ -14,7 +14,7 @@ let annotationViewIdentifier = "onTheMapAV"
 class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Variables & Constants
     let apiClient = APIClient.sharedClient
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let studentInfoHandler = StudentInformationHandler.sharedHandler
     @IBOutlet weak var mapView: MKMapView?
     
     // MARK: Lifecycle Methods
@@ -42,7 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 do {
                     let studentLocations = try JSONDecoder().decode(StudentInformationArray.self, from: responseData)
 
-                    self.appDelegate.studentLocations = studentLocations.results
+                    self.studentInfoHandler.studentLocations = studentLocations.results
                     self.addStudentLocationsToMap(locations: studentLocations.results)
                 // if there's a problem, alert the user
                 } catch {
@@ -85,25 +85,11 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         }
     }
     
-    // createUserURLFromAnnotation
-    // Creates a URL object from the URL String in the StudentLocations array
-    func createUserURLFromAnnotation(urlStr: String?) -> URL? {
-        if let urlStr = urlStr {
-            let userURL = URL(string: urlStr)
-            
-            if let userURL = userURL {
-                return userURL
-            }
-        }
-        
-        return nil
-    }
-    
     // navigateToUserURL
     // Displays an alert allowing the user to navigate to the provided URL
     func navigateToUserURL(_ sender: UIButton) {
         let userURL = sender.title(for: .normal)
-        let url = self.createUserURLFromAnnotation(urlStr: userURL)
+        let url = self.studentInfoHandler.createUserURLFromAnnotation(urlStr: userURL)
         
         // Display an alert for the user to choose whether to view the link in the browser
         DispatchQueue.main.async {

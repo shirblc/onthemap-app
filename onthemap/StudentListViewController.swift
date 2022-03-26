@@ -12,7 +12,7 @@ let callViewIdentifier = "onTheMapCV"
 
 class StudentListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     // MARK: Variables & Constants
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let studentInfoHandler = StudentInformationHandler.sharedHandler
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Lifecycle Methods
@@ -24,11 +24,11 @@ class StudentListViewController: UIViewController, UITableViewDelegate, UITableV
     
     // MARK: UITableViewDataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.appDelegate.studentLocations?.count ?? 0
+        return self.studentInfoHandler.studentLocations?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let studentAtIndexPath = self.appDelegate.studentLocations?[indexPath.row]
+        let studentAtIndexPath = self.studentInfoHandler.studentLocations?[indexPath.row]
         var userCellView = tableView.dequeueReusableCell(withIdentifier: callViewIdentifier)
         
         // create the cell if there isn't an existing one
