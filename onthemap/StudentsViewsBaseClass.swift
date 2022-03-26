@@ -34,7 +34,15 @@ class StudentsViewsBaseClass: UIViewController {
             // if they choose to, try to navigate to the user's URL
             selectAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 if let url = url {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                    UIApplication.shared.open(url, options: [:], completionHandler: {
+                        hasOpenedSuccessfully in
+                        if(hasOpenedSuccessfully) {
+                            return
+                        // if there was an issue opening the URL, alert the user
+                        } else {
+                            self.showErrorAlert(errorStr: "The user did not provide a valid URL or there was a problem opening the URL")
+                        }
+                    })
                 } else {
                     // if there's a problem generating a URL, alert the user
                     self.dismiss(animated: true, completion: nil)
