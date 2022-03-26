@@ -10,9 +10,8 @@ import UIKit
 
 let callViewIdentifier = "onTheMapCV"
 
-class StudentListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class StudentListViewController: StudentsViewsBaseClass, UITableViewDelegate, UITableViewDataSource {
     // MARK: Variables & Constants
-    let studentInfoHandler = StudentInformationHandler.sharedHandler
     @IBOutlet weak var tableView: UITableView!
     
     // MARK: Lifecycle Methods
@@ -45,6 +44,4 @@ class StudentListViewController: UIViewController, UITableViewDelegate, UITableV
         
         return userCellView!
     }
-    
-    
 }
