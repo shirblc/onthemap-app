@@ -11,6 +11,7 @@
 		0149D50F27EF2C2C00764075 /* StudentListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149D50E27EF2C2C00764075 /* StudentListViewController.swift */; };
 		0149D51127EF850C00764075 /* StudentInformationHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149D51027EF850C00764075 /* StudentInformationHandler.swift */; };
 		0149D51327EF8AAA00764075 /* StudentsViewsBaseClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149D51227EF8AAA00764075 /* StudentsViewsBaseClass.swift */; };
+		0149D51527EF9AB600764075 /* LocationEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0149D51427EF9AB600764075 /* LocationEditViewController.swift */; };
 		018CB72327E7658A00B17F7E /* APIEndpoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018CB72227E7658A00B17F7E /* APIEndpoints.swift */; };
 		018CB72527E9073D00B17F7E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 018CB72427E9073D00B17F7E /* MapViewController.swift */; };
 		01A5CC4226A4B39F00DA1886 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A5CC4126A4B39F00DA1886 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		0149D50E27EF2C2C00764075 /* StudentListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentListViewController.swift; sourceTree = "<group>"; };
 		0149D51027EF850C00764075 /* StudentInformationHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformationHandler.swift; sourceTree = "<group>"; };
 		0149D51227EF8AAA00764075 /* StudentsViewsBaseClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsViewsBaseClass.swift; sourceTree = "<group>"; };
+		0149D51427EF9AB600764075 /* LocationEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationEditViewController.swift; sourceTree = "<group>"; };
 		018CB72227E7658A00B17F7E /* APIEndpoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoints.swift; sourceTree = "<group>"; };
 		018CB72427E9073D00B17F7E /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		01A5CC3E26A4B39F00DA1886 /* onthemap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onthemap.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,6 +174,7 @@
 				018CB72427E9073D00B17F7E /* MapViewController.swift */,
 				0149D50E27EF2C2C00764075 /* StudentListViewController.swift */,
 				0149D51227EF8AAA00764075 /* StudentsViewsBaseClass.swift */,
+				0149D51427EF9AB600764075 /* LocationEditViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 			files = (
 				01A5CC4626A4B39F00DA1886 /* LoginViewController.swift in Sources */,
 				0149D51327EF8AAA00764075 /* StudentsViewsBaseClass.swift in Sources */,
+				0149D51527EF9AB600764075 /* LocationEditViewController.swift in Sources */,
 				0149D50F27EF2C2C00764075 /* StudentListViewController.swift in Sources */,
 				018CB72327E7658A00B17F7E /* APIEndpoints.swift in Sources */,
 				0149D51127EF850C00764075 /* StudentInformationHandler.swift in Sources */,
@@ -422,7 +426,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -477,7 +481,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
