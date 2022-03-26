@@ -30,7 +30,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
     func fetchStudentLocations() {
         do {
             // Fetch student locations from the API
-            let urlRequest = try self.apiClient.getUrlRequest(endpoint: .GetStudentLocation(limit: nil, skip: nil, order: nil, uniqueKey: nil))
+            let urlRequest = try self.apiClient.getUrlRequest(endpoint: .GetStudentLocation(limit: nil, skip: nil, order: "-updatedAt", uniqueKey: nil))
             self.apiClient.executeDataTask(url: urlRequest) { responseData, errorStr in
                 // if there was an error, alert the user
                 guard errorStr == nil, let responseData = responseData else {
