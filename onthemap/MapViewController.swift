@@ -48,7 +48,8 @@ class MapViewController: StudentsViewsBaseClass, MKMapViewDelegate {
         
         if annotationView == nil {
             let userDataButton = UIButton(type: .system, primaryAction: UIAction(handler: { action in
-                self.navigateToUserURL(action.sender as! UIButton)
+                let userProvidedURL = (action.sender as! UIButton).title(for: .normal) ?? ""
+                self.navigateToUserURL(userURL: userProvidedURL)
             }))
             userDataButton.setTitle(annotation.subtitle ?? "", for: .normal)
             annotationView = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: annotationViewIdentifier)

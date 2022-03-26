@@ -25,8 +25,7 @@ class StudentsViewsBaseClass: UIViewController {
     
     // navigateToUserURL
     // Displays an alert allowing the user to navigate to the provided URL
-    func navigateToUserURL(_ sender: UIButton) {
-        let userURL = sender.title(for: .normal)
+    func navigateToUserURL(userURL: String) {
         let url = self.studentInfoHandler.createUserURLFromAnnotation(urlStr: userURL)
         
         // Display an alert for the user to choose whether to view the link in the browser

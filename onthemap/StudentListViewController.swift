@@ -44,4 +44,9 @@ class StudentListViewController: StudentsViewsBaseClass, UITableViewDelegate, UI
         
         return userCellView!
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let userURL = self.studentInfoHandler.studentLocations?[indexPath.row].mediaURL ?? ""
+        self.navigateToUserURL(userURL: userURL)
+    }
 }
