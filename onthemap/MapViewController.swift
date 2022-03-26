@@ -14,6 +14,7 @@ let annotationViewIdentifier = "onTheMapAV"
 class MapViewController: UIViewController, MKMapViewDelegate {
     // MARK: Variables & Constants
     let apiClient = APIClient.sharedClient
+    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     @IBOutlet weak var mapView: MKMapView?
     
     // MARK: Lifecycle Methods
@@ -41,6 +42,7 @@ class MapViewController: UIViewController, MKMapViewDelegate {
                 do {
                     let studentLocations = try JSONDecoder().decode(StudentInformationArray.self, from: responseData)
 
+                    self.appDelegate.studentLocations = studentLocations.results
                     self.addStudentLocationsToMap(locations: studentLocations.results)
                 // if there's a problem, alert the user
                 } catch {
