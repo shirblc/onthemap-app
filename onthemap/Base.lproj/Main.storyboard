@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="aX3-iA-Ya2">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -277,11 +276,11 @@
             </objects>
             <point key="canvasLocation" x="1511.5942028985507" y="-485.49107142857139"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--On the Map-->
         <scene sceneID="4e9-lq-n7s">
             <objects>
                 <tabBarController storyboardIdentifier="mainTabController" id="hbG-07-I7w" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="SfH-xm-xhG"/>
+                    <navigationItem key="navigationItem" title="On the Map" id="SfH-xm-xhG"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4RC-eh-Ucj">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -304,8 +303,8 @@
         <image name="list.bullet" catalog="system" width="128" height="88"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="mappin" catalog="system" width="105" height="128"/>
-        <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

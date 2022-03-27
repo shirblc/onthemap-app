@@ -11,6 +11,12 @@ import UIKit
 class StudentsViewsBaseClass: UIViewController {
     let studentInfoHandler = StudentInformationHandler.sharedHandler
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.tabBarController?.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Logout", style: .plain, target: self, action: #selector(logOut(_:)))
+        self.tabBarController?.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(createUserLocation(_:)))
+    }
+    
     // showErrorAlert
     // Displays an alert controller with the given error message
     func showErrorAlert(errorStr: String) {
@@ -55,5 +61,17 @@ class StudentsViewsBaseClass: UIViewController {
             }))
             self.present(selectAlert, animated: true, completion: nil)
         }
+    }
+    
+    // createUserLocation
+    // Triggers the segue to the view for creating a user location
+    @objc func createUserLocation(_ sender: Any) {
+        print(sender)
+    }
+    
+    // logOut
+    // Logs the user out of the current session
+    @objc func logOut(_ sender: Any) {
+        print(sender)
     }
 }
