@@ -65,6 +65,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             // Get the session ID from the response, as specified in their API docs
             let response = try JSONSerialization.jsonObject(with: responseData.subdata(in: 5..<responseData.count), options: []) as! [String: [String: Any]]
             self.apiClient.userSession = response["session"]?["id"] as? String
+            self.apiClient.userKey = response["account"]?["key"] as? String
             
             // send the user to the next view
             DispatchQueue.main.async {
