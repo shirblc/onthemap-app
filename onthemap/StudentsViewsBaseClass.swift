@@ -67,7 +67,9 @@ class StudentsViewsBaseClass: UIViewController {
     // createUserLocation
     // Triggers the segue to the view for creating a user location
     @objc func createUserLocation(_ sender: Any) {
-        print(sender)
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "editLocationSegue", sender: nil)
+        }
     }
     
     // logOut
