@@ -10,6 +10,7 @@ import UIKit
 
 class StudentsViewsBaseClass: UIViewController {
     let studentInfoHandler = StudentInformationHandler.sharedHandler
+    let apiClient = APIClient.sharedClient
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,6 +73,24 @@ class StudentsViewsBaseClass: UIViewController {
     // logOut
     // Logs the user out of the current session
     @objc func logOut(_ sender: Any) {
-        print(sender)
+        do {
+            let requestURL = try self.apiClient.getUrlRequest(endpoint: .LogOut)
+            self.apiClient.executeDataTask(url: requestURL) { responseData, errorStr in
+                // if there was an error, alert the user
+                guard errorStr == nil, let _ = responseData else {
+                    self.showErrorAlert(errorStr: errorStr!)
+                    return
+                }
+                
+                // log the user out and return them to login
+                self.apiClient.userSession = nil
+                DispatchQueue.main.async {
+                    self.navigationController?.popToRootViewController(animated: true)
+                }
+            }
+        } catch {
+            self.showErrorAlert(errorStr: (error as? APIClientError)?.errorMessage ?? error.localizedDescription)
+        }
+        
     }
 }

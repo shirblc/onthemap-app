@@ -20,6 +20,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     override func viewWillAppear(_ animated: Bool) {
         self.errorTextLabel.text = ""
         self.passwordTextField.isSecureTextEntry = true
+        self.usernameTextFIeld.text = ""
+        self.passwordTextField.text = ""
     }
     
     override func viewDidLoad() {
