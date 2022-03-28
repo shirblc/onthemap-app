@@ -204,7 +204,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Find on the Map"/>
                                         <connections>
-                                            <action selector="submitLocation:" destination="bCS-W3-gWr" eventType="touchUpInside" id="a4e-wI-eut"/>
+                                            <segue destination="Sbi-Z8-jiR" kind="show" identifier="enterLinkSegue" id="kk5-pw-nhH"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -222,12 +222,40 @@
                     </view>
                     <navigationItem key="navigationItem" id="0Wd-mg-YeP"/>
                     <connections>
+                        <outlet property="findOnMapButton" destination="LW9-3R-KpN" id="vvF-Fl-CWq"/>
                         <outlet property="locationTextField" destination="EJO-Tr-uN7" id="zGZ-EY-Her"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tbm-tl-vQ4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2589.5999999999999" y="-120.44334975369459"/>
+        </scene>
+        <!--Link Post View Controller-->
+        <scene sceneID="yvr-tW-fbS">
+            <objects>
+                <viewController id="Sbi-Z8-jiR" customClass="LinkPostViewController" customModule="onthemap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="CS8-An-mW0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="t3i-iW-zmk">
+                                <rect key="frame" x="20" y="88" width="335" height="690"/>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="T74-Ce-s0m"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="t3i-iW-zmk" firstAttribute="top" secondItem="T74-Ce-s0m" secondAttribute="top" id="ZE3-3d-0HP"/>
+                            <constraint firstItem="t3i-iW-zmk" firstAttribute="bottom" secondItem="T74-Ce-s0m" secondAttribute="bottom" id="aTn-HV-xxg"/>
+                            <constraint firstItem="t3i-iW-zmk" firstAttribute="leading" secondItem="T74-Ce-s0m" secondAttribute="leading" constant="20" id="i23-PV-6gJ"/>
+                            <constraint firstItem="T74-Ce-s0m" firstAttribute="trailing" secondItem="t3i-iW-zmk" secondAttribute="trailing" constant="20" id="vke-Bc-IdP"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ZVA-rl-t4m"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8fr-Px-733" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3524" y="-120.44334975369459"/>
         </scene>
         <!--Map-->
         <scene sceneID="A3k-sx-ILL">
