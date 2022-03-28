@@ -204,7 +204,7 @@
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="gray" title="Find on the Map"/>
                                         <connections>
-                                            <segue destination="Sbi-Z8-jiR" kind="show" identifier="enterLinkSegue" id="kk5-pw-nhH"/>
+                                            <segue destination="Sbi-Z8-jiR" kind="show" identifier="enterLinkSegue" id="cJD-fX-uIP"/>
                                         </connections>
                                     </button>
                                 </subviews>
