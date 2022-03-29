@@ -1,5 +1,5 @@
 //
-//  StudentInformationHandler.swift
+//  OnTheMapHandler.swift
 //  onthemap
 //
 //  Created by Shir Bar Lev on 26/03/2022.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-class StudentInformationHandler {
-    static var sharedHandler = StudentInformationHandler()
+class OnTheMapHandler {
+    static var sharedHandler = OnTheMapHandler()
     var studentLocations: [StudentInformation]?
     let apiClient = APIClient.sharedClient
     

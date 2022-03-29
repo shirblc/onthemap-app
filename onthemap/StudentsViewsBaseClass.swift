@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class StudentsViewsBaseClass: UIViewController {
-    let studentInfoHandler = StudentInformationHandler.sharedHandler
+    let studentInfoHandler = OnTheMapHandler.sharedHandler
     let apiClient = APIClient.sharedClient
     
     override func viewDidLoad() {
