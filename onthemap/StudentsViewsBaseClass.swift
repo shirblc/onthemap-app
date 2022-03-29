@@ -76,7 +76,7 @@ class StudentsViewsBaseClass: UIViewController {
     // Logs the user out of the current session
     @objc func logOut(_ sender: Any) {
         do {
-            let requestURL = try self.apiClient.getUrlRequest(endpoint: .LogOut)
+            let requestURL = try self.apiClient.getUrlRequest(endpoint: .LogOut, requestBody: nil)
             self.apiClient.executeDataTask(url: requestURL, successHandler: { _ in
                 // log the user out and return them to login
                 self.apiClient.userSession = nil

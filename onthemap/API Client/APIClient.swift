@@ -56,7 +56,7 @@ class APIClient {
     // MARK: Generic Data Task Methods
     // getUrlRequest
     // Gets the URLRequest object
-    func getUrlRequest(endpoint: apiEndpoints) throws -> URLRequest {
+    func getUrlRequest(endpoint: apiEndpoints, requestBody: String?) throws -> URLRequest {
         let requestUrlComponents = endpoint.requestUrl
         
         // Make sure it's a valid URL
@@ -84,6 +84,10 @@ class APIClient {
         
         if let userSession = self.userSession {
             urlRequest.addValue(userSession, forHTTPHeaderField: "Authorization")
+        }
+        
+        if let requestBody = requestBody {
+            urlRequest.httpBody = requestBody.data(using: .utf8)
         }
         
         return urlRequest

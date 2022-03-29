@@ -33,11 +33,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func login(_ sender: UIButton) {
         let username = usernameTextFIeld.text!
         let password = passwordTextField.text!
+        let requestBody = "{\"udacity\": { \"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         
         // Try to login
         do {
-            var loginUrl = try self.apiClient.getUrlRequest(endpoint: .LogIn)
-            loginUrl.httpBody = "{\"udacity\": { \"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
+            let loginUrl = try self.apiClient.getUrlRequest(endpoint: .LogIn, requestBody: requestBody)
             self.apiClient.executeDataTask(url: loginUrl, successHandler: self.handleSuccessfulLogin(responseData:), errorHandler: self.handleLoginError(errorStr:))
         } catch let error {
             self.handleLoginError(errorStr: error.localizedDescription)
