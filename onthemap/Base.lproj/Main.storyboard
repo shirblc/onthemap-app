@@ -238,20 +238,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleAspectFit" axis="vertical" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="t3i-iW-zmk">
-                                <rect key="frame" x="20" y="88" width="335" height="690"/>
-                            </stackView>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a Link to Share Here" textAlignment="natural" minimumFontSize="20" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="LHL-HH-tFX">
+                                <rect key="frame" x="60" y="88" width="255" height="70"/>
+                                <color key="backgroundColor" systemColor="tertiarySystemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="7dF-fX-rKR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <textInputTraits key="textInputTraits" textContentType="url"/>
+                            </textField>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="cfs-We-mip">
+                                <rect key="frame" x="20" y="166" width="335" height="597"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xht-ka-4qW">
+                                <rect key="frame" x="120" y="717" width="135" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="gray" title="Submit"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T74-Ce-s0m"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="t3i-iW-zmk" firstAttribute="top" secondItem="T74-Ce-s0m" secondAttribute="top" id="ZE3-3d-0HP"/>
-                            <constraint firstItem="t3i-iW-zmk" firstAttribute="bottom" secondItem="T74-Ce-s0m" secondAttribute="bottom" id="aTn-HV-xxg"/>
-                            <constraint firstItem="t3i-iW-zmk" firstAttribute="leading" secondItem="T74-Ce-s0m" secondAttribute="leading" constant="20" id="i23-PV-6gJ"/>
-                            <constraint firstItem="T74-Ce-s0m" firstAttribute="trailing" secondItem="t3i-iW-zmk" secondAttribute="trailing" constant="20" id="vke-Bc-IdP"/>
+                            <constraint firstItem="LHL-HH-tFX" firstAttribute="top" secondItem="T74-Ce-s0m" secondAttribute="top" id="BSV-F3-deE"/>
+                            <constraint firstItem="LHL-HH-tFX" firstAttribute="centerX" secondItem="CS8-An-mW0" secondAttribute="centerX" id="Ig3-Fp-PyF"/>
+                            <constraint firstItem="T74-Ce-s0m" firstAttribute="trailing" secondItem="Xht-ka-4qW" secondAttribute="trailing" constant="120" id="JBm-TF-eER"/>
+                            <constraint firstItem="T74-Ce-s0m" firstAttribute="bottom" secondItem="Xht-ka-4qW" secondAttribute="bottom" constant="30" id="Kng-TW-zya"/>
+                            <constraint firstItem="cfs-We-mip" firstAttribute="leading" secondItem="T74-Ce-s0m" secondAttribute="leading" constant="20" id="M8t-vh-z0b"/>
+                            <constraint firstItem="T74-Ce-s0m" firstAttribute="trailing" secondItem="cfs-We-mip" secondAttribute="trailing" constant="20" id="UFh-bl-ZQI"/>
+                            <constraint firstItem="T74-Ce-s0m" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="LHL-HH-tFX" secondAttribute="trailing" id="YRl-Ld-hnl"/>
+                            <constraint firstItem="cfs-We-mip" firstAttribute="top" secondItem="LHL-HH-tFX" secondAttribute="bottom" constant="8" symbolic="YES" id="ZyA-hg-kB2"/>
+                            <constraint firstItem="T74-Ce-s0m" firstAttribute="trailing" secondItem="Xht-ka-4qW" secondAttribute="trailing" constant="120" id="dq6-w7-rdo"/>
+                            <constraint firstItem="Xht-ka-4qW" firstAttribute="leading" secondItem="T74-Ce-s0m" secondAttribute="leading" constant="120" id="evT-S5-wgG"/>
+                            <constraint firstItem="Xht-ka-4qW" firstAttribute="leading" secondItem="T74-Ce-s0m" secondAttribute="leading" constant="120" id="g4Z-ti-5uB"/>
+                            <constraint firstItem="LHL-HH-tFX" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="T74-Ce-s0m" secondAttribute="leading" id="pHe-nf-4qi"/>
+                            <constraint firstItem="cfs-We-mip" firstAttribute="bottom" secondItem="T74-Ce-s0m" secondAttribute="bottom" constant="-15" id="wCH-4U-G2u"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ZVA-rl-t4m"/>
+                    <connections>
+                        <outlet property="linkTextFIeld" destination="LHL-HH-tFX" id="VYA-hq-hyy"/>
+                        <outlet property="userLocationMap" destination="cfs-We-mip" id="1CO-jp-gSd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fr-Px-733" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -320,6 +347,9 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="tertiarySystemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="tertiarySystemGroupedBackgroundColor">
