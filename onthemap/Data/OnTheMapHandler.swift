@@ -10,6 +10,7 @@ import Foundation
 class OnTheMapHandler {
     static var sharedHandler = OnTheMapHandler()
     var studentLocations: [StudentInformation]?
+    var currentUser: CurrentUser?
     let apiClient = APIClient.sharedClient
     
     private init() { }
