@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 class StudentsViewsBaseClass: UIViewController {
-    let studentInfoHandler = OnTheMapHandler.sharedHandler
+    let appDataHandler = OnTheMapHandler.sharedHandler
     let apiClient = APIClient.sharedClient
     
     override func viewDidLoad() {
@@ -33,7 +33,7 @@ class StudentsViewsBaseClass: UIViewController {
     // navigateToUserURL
     // Displays an alert allowing the user to navigate to the provided URL
     func navigateToUserURL(userURL: String) {
-        let url = self.studentInfoHandler.createUserURLFromAnnotation(urlStr: userURL)
+        let url = self.appDataHandler.createUserURLFromAnnotation(urlStr: userURL)
         
         // Display an alert for the user to choose whether to view the link in the browser
         DispatchQueue.main.async {

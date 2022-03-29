@@ -23,11 +23,11 @@ class StudentListViewController: StudentsViewsBaseClass, UITableViewDelegate, UI
     
     // MARK: UITableViewDataSource Methods
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.studentInfoHandler.studentLocations?.count ?? 0
+        return self.appDataHandler.studentLocations?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let studentAtIndexPath = self.studentInfoHandler.studentLocations?[indexPath.row]
+        let studentAtIndexPath = self.appDataHandler.studentLocations?[indexPath.row]
         var userCellView = tableView.dequeueReusableCell(withIdentifier: callViewIdentifier)
         
         // create the cell if there isn't an existing one
@@ -46,7 +46,7 @@ class StudentListViewController: StudentsViewsBaseClass, UITableViewDelegate, UI
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let userURL = self.studentInfoHandler.studentLocations?[indexPath.row].mediaURL ?? ""
+        let userURL = self.appDataHandler.studentLocations?[indexPath.row].mediaURL ?? ""
         self.navigateToUserURL(userURL: userURL)
     }
 }

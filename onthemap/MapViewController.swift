@@ -19,7 +19,7 @@ class MapViewController: StudentsViewsBaseClass, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView?.delegate = self
-        self.studentInfoHandler.fetchStudentLocations(successCallback: self.addStudentLocationsToMap(locations:), errorCallback: self.showErrorAlert(errorStr:))
+        self.appDataHandler.fetchStudentLocations(successCallback: self.addStudentLocationsToMap(locations:), errorCallback: self.showErrorAlert(errorStr:))
     }
     
     // MARK: User Locations Methods
