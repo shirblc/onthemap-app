@@ -15,6 +15,7 @@ class OnTheMapHandler {
     
     private init() { }
     
+    // MARK: StudentLocation Methods
     // fetchStudentLocations
     // Fetches student locations from the server
     func fetchStudentLocations(successCallback: @escaping ([StudentInformation]) -> Void, errorCallback: @escaping (String) -> Void) {
@@ -45,5 +46,14 @@ class OnTheMapHandler {
         }
         
         return nil
+    }
+    
+    // MARK: CurrentUser Methods
+    func getUserData(userKey: Int, errorHandler: @escaping (String) -> Void) {
+        self.apiClient.createAndExecuteTask(endpoint: .GetUser(id: userKey), requestBody: nil, successHandler: { responseData in
+            let response = self.apiClient.parseJsonResponse(responseData: responseData.subdata(in: 5..<responseData.count), errorHandler: errorHandler)
+            
+            self.currentUser = CurrentUser(userSession: self.apiClient.userSession!, userKey: userKey, userFirstName: response?["first_name"] as! String, userLastName: response?["last_name"] as! String)
+        }, errorHandler: errorHandler)
     }
 }

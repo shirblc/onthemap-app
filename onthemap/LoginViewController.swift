@@ -10,6 +10,7 @@ import UIKit
 class LoginViewController: UIViewController, UITextFieldDelegate {
     // MARK: Variables & Constants
     let apiClient = APIClient.sharedClient
+    let appDataHandler = OnTheMapHandler.sharedHandler
     
     // MARK: Outlets
     @IBOutlet weak var usernameTextFIeld: UITextField!
@@ -47,7 +48,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let response = self.apiClient.parseJsonResponse(responseData: responseData.subdata(in: 5..<responseData.count), errorHandler: self.handleLoginError(errorStr:)) as? [String: [String: Any]]
         
         self.apiClient.userSession = response?["session"]?["id"] as? String
-        self.apiClient.userKey = response?["account"]?["key"] as? String
+        self.apiClient.userKey = (response?["account"]?["key"] as? NSString)?.integerValue
+        self.appDataHandler.getUserData(userKey: self.apiClient.userKey!, errorHandler: self.handleLoginError(errorStr:))
         
         // send the user to the next view
         DispatchQueue.main.async {

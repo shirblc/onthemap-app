@@ -37,7 +37,7 @@ class APIClient {
     static var currentClient: APIClient?
     var urlSession: URLSession
     var userSession: String?
-    var userKey: String?
+    var userKey: Int?
     
     private init() {
         self.urlSession = URLSession.shared
