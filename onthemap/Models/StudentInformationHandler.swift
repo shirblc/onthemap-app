@@ -20,13 +20,7 @@ class StudentInformationHandler {
         do {
             // Fetch student locations from the API
             let urlRequest = try self.apiClient.getUrlRequest(endpoint: .GetStudentLocation(limit: nil, skip: nil, order: "-updatedAt", uniqueKey: nil))
-            self.apiClient.executeDataTask(url: urlRequest) { responseData, errorStr in
-                // if there was an error, alert the user
-                guard errorStr == nil, let responseData = responseData else {
-                    errorCallback(errorStr!)
-                    return
-                }
-
+            self.apiClient.executeDataTask(url: urlRequest, successHandler: { responseData in
                 // otherwise try to decode the data to an object
                 do {
                     let studentLocations = try JSONDecoder().decode(StudentInformationArray.self, from: responseData)
@@ -37,7 +31,7 @@ class StudentInformationHandler {
                 } catch {
                     errorCallback(error.localizedDescription)
                 }
-            }
+            }, errorHandler: errorCallback)
         } catch {
             errorCallback(error.localizedDescription)
         }

@@ -38,26 +38,13 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         do {
             var loginUrl = try self.apiClient.getUrlRequest(endpoint: .LogIn)
             loginUrl.httpBody = "{\"udacity\": { \"username\": \"\(username)\", \"password\": \"\(password)\"}}".data(using: .utf8)
-            self.apiClient.executeDataTask(url: loginUrl) { (responseData, errorStr) in
-                // if there was an error, alert the user
-                guard errorStr == nil, let responseData = responseData else {
-                    DispatchQueue.main.async {
-                        self.errorTextLabel.text = errorStr
-                    }
-                    return
-                }
-                
-                // otherwise handle handle login
-                self.handleSuccessfulLogin(responseData: responseData)
-            }
+            self.apiClient.executeDataTask(url: loginUrl, successHandler: self.handleSuccessfulLogin(responseData:), errorHandler: self.handleLoginError(errorStr:))
         } catch let error {
-            DispatchQueue.main.async {
-                self.errorTextLabel.text = error.localizedDescription
-            }
+            self.handleLoginError(errorStr: error.localizedDescription)
         }
     }
 
-    // handleLogin
+    // handleSuccessfulLogin
     // Handles a successful login
     // Gets the session ID from the response and send the user to the main view controller
     func handleSuccessfulLogin(responseData: Data) {
@@ -72,9 +59,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: "continueToAppSegue", sender: nil)
             }
         } catch {
-            DispatchQueue.main.async {
-                self.errorTextLabel.text = error.localizedDescription
-            }
+            self.handleLoginError(errorStr: error.localizedDescription)
+        }
+    }
+    
+    // handleLoginError
+    // Alerts the user there was an issue logging in
+    func handleLoginError(errorStr: String) {
+        DispatchQueue.main.async {
+            self.errorTextLabel.text = errorStr
         }
     }
 }

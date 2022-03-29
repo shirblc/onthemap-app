@@ -53,6 +53,7 @@ class APIClient {
         }
     }
     
+    // MARK: Generic Data Task Methods
     // getUrlRequest
     // Gets the URLRequest object
     func getUrlRequest(endpoint: apiEndpoints) throws -> URLRequest {
@@ -90,25 +91,25 @@ class APIClient {
     
     // executeDataTask
     // Executes a network request
-    func executeDataTask(url: URLRequest, handler: @escaping httpHandler) {
+    func executeDataTask(url: URLRequest, successHandler: @escaping (Data) -> Void, errorHandler: @escaping (String) -> Void) {
         let getTask = self.urlSession.dataTask(with: url) { (data, response, error) in
             // Check there's been no internal error and we got back an HTTP response
             guard error == nil, let httpResponse = response as? HTTPURLResponse else {
                 let errorStr = self.getErrorData(responseData: data, error: error, code: nil)
-                handler(nil, errorStr)
+                errorHandler(errorStr)
                 return
             }
             
             // Check we got back a success HTTP status code
             guard (200...399).contains(httpResponse.statusCode) else {
                 let errorStr = self.getErrorData(responseData: data, error: error, code: httpResponse.statusCode)
-                handler(nil, errorStr)
+                errorHandler(errorStr)
                 return
             }
             
             // If all went well, return the data
             if let data = data {
-                handler(data, nil)
+                successHandler(data)
             }
         }
         getTask.resume()
