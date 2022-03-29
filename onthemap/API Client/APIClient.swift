@@ -31,7 +31,7 @@ struct APIClientError: Error {
 
 extension APIClientError: LocalizedError {}
 
-typealias httpHandler = (Data?, String?) -> Void
+typealias jsonResponse = [String: Any]
 
 class APIClient {
     static var currentClient: APIClient?
@@ -154,5 +154,17 @@ class APIClient {
         }
         
         return errorResponse
+    }
+    
+    // parseJsonResponse
+    // Parses the response data and return the JSON
+    func parseJsonResponse(responseData: Data, errorHandler: (String) -> Void) -> jsonResponse? {
+        do {
+            let response = try JSONSerialization.jsonObject(with: responseData, options: []) as! jsonResponse
+            return response
+        } catch {
+            errorHandler(error.localizedDescription)
+            return nil
+        }
     }
 }

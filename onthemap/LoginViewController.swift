@@ -43,18 +43,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Handles a successful login
     // Gets the session ID from the response and send the user to the main view controller
     func handleSuccessfulLogin(responseData: Data) {
-        do {
-            // Get the session ID from the response, as specified in their API docs
-            let response = try JSONSerialization.jsonObject(with: responseData.subdata(in: 5..<responseData.count), options: []) as! [String: [String: Any]]
-            self.apiClient.userSession = response["session"]?["id"] as? String
-            self.apiClient.userKey = response["account"]?["key"] as? String
-            
-            // send the user to the next view
-            DispatchQueue.main.async {
-                self.performSegue(withIdentifier: "continueToAppSegue", sender: nil)
-            }
-        } catch {
-            self.handleLoginError(errorStr: error.localizedDescription)
+        // Get the session ID from the response, as specified in their API docs
+        let response = self.apiClient.parseJsonResponse(responseData: responseData.subdata(in: 5..<responseData.count), errorHandler: self.handleLoginError(errorStr:)) as? [String: [String: Any]]
+        
+        self.apiClient.userSession = response?["session"]?["id"] as? String
+        self.apiClient.userKey = response?["account"]?["key"] as? String
+        
+        // send the user to the next view
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: "continueToAppSegue", sender: nil)
         }
     }
     
