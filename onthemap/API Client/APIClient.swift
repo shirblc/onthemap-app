@@ -119,6 +119,18 @@ class APIClient {
         getTask.resume()
     }
     
+    // createAndExecuteTask
+    // Shortcut method for creating the URLRequest for the data task and executing it
+    func createAndExecuteTask(endpoint: apiEndpoints, requestBody: String?, successHandler: @escaping (Data) -> Void, errorHandler: @escaping (String) -> Void) {
+        do {
+            let urlRequest = try self.getUrlRequest(endpoint: endpoint, requestBody: requestBody)
+            self.executeDataTask(url: urlRequest, successHandler: successHandler, errorHandler: errorHandler)
+        } catch {
+            let errorMessage = (error as? APIClientError)?.errorMessage ?? error.localizedDescription
+            errorHandler(errorMessage)
+        }
+    }
+    
     // getErrorData
     // Gets the string describing the error
     func getErrorData(responseData: Data?, error: Error?, code: Int?) -> String {

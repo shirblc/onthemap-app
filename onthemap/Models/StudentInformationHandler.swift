@@ -17,24 +17,19 @@ class StudentInformationHandler {
     // fetchStudentLocations
     // Fetches student locations from the server
     func fetchStudentLocations(successCallback: @escaping ([StudentInformation]) -> Void, errorCallback: @escaping (String) -> Void) {
-        do {
-            // Fetch student locations from the API
-            let urlRequest = try self.apiClient.getUrlRequest(endpoint: .GetStudentLocation(limit: nil, skip: nil, order: "-updatedAt", uniqueKey: nil))
-            self.apiClient.executeDataTask(url: urlRequest, successHandler: { responseData in
-                // otherwise try to decode the data to an object
-                do {
-                    let studentLocations = try JSONDecoder().decode(StudentInformationArray.self, from: responseData)
+        // Fetch student locations from the API
+        self.apiClient.createAndExecuteTask(endpoint: .GetStudentLocation(limit: nil, skip: nil, order: "-updatedAt", uniqueKey: nil), requestBody: nil, successHandler: { responseData in
+            // otherwise try to decode the data to an object
+            do {
+                let studentLocations = try JSONDecoder().decode(StudentInformationArray.self, from: responseData)
 
-                    self.studentLocations = studentLocations.results
-                    successCallback(studentLocations.results)
-                // if there's a problem, alert the user
-                } catch {
-                    errorCallback(error.localizedDescription)
-                }
-            }, errorHandler: errorCallback)
-        } catch {
-            errorCallback(error.localizedDescription)
-        }
+                self.studentLocations = studentLocations.results
+                successCallback(studentLocations.results)
+            // if there's a problem, alert the user
+            } catch {
+                errorCallback(error.localizedDescription)
+            }
+        }, errorHandler: errorCallback)
     }
     
     // createUserURLFromAnnotation

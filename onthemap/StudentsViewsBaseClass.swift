@@ -75,18 +75,12 @@ class StudentsViewsBaseClass: UIViewController {
     // logOut
     // Logs the user out of the current session
     @objc func logOut(_ sender: Any) {
-        do {
-            let requestURL = try self.apiClient.getUrlRequest(endpoint: .LogOut, requestBody: nil)
-            self.apiClient.executeDataTask(url: requestURL, successHandler: { _ in
-                // log the user out and return them to login
-                self.apiClient.userSession = nil
-                DispatchQueue.main.async {
-                    self.navigationController?.popToRootViewController(animated: true)
-                }
-            }, errorHandler: self.showErrorAlert(errorStr:))
-        } catch {
-            self.showErrorAlert(errorStr: (error as? APIClientError)?.errorMessage ?? error.localizedDescription)
-        }
-        
+        self.apiClient.createAndExecuteTask(endpoint: .LogOut, requestBody: nil, successHandler: { _ in
+            // log the user out and return them to login
+            self.apiClient.userSession = nil
+            DispatchQueue.main.async {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }, errorHandler: self.showErrorAlert(errorStr:))
     }
 }
