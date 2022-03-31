@@ -66,11 +66,29 @@ class OnTheMapHandler {
         return nil
     }
     
+    // createUserLocation
+    // Posts a new StudentInformation to the server
+    func createUserLocation(newLocation: StudentInformation, successCallback: @escaping () -> Void, errorCallback: @escaping (String) -> Void) {
+        do {
+            let data = try JSONEncoder().encode(newLocation)
+            self.apiClient.createAndExecuteTask(endpoint: .CreateStudentLocation, requestBody: data, successHandler: { responseData in
+                //  if the user posting was successful, add it to the array
+                self.studentLocations?.insert(newLocation, at: 0)
+                successCallback()
+            }, errorHandler: errorCallback)
+        } catch {
+            errorCallback(error.localizedDescription)
+        }
+    }
+    
     // MARK: CurrentUser Methods
+    // getUserData
+    // Fetches the User's info (mainly first and last name) from the Udacity API
     func getUserData(userKey: Int, errorHandler: @escaping (String) -> Void) {
         self.apiClient.createAndExecuteTask(endpoint: .GetUser(id: userKey), requestBody: nil, successHandler: { responseData in
             let response = self.apiClient.parseJsonResponse(responseData: responseData.subdata(in: 5..<responseData.count), errorHandler: errorHandler)
             
+            // save the current user's info for posting pins
             self.currentUser = CurrentUser(userSession: self.apiClient.userSession!, userKey: userKey, userFirstName: response?["first_name"] as! String, userLastName: response?["last_name"] as! String)
         }, errorHandler: errorHandler)
     }

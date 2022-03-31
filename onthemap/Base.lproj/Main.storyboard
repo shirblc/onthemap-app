@@ -254,6 +254,9 @@
                                 <rect key="frame" x="120" y="717" width="135" height="31"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="gray" title="Submit"/>
+                                <connections>
+                                    <action selector="submitUserLocation:" destination="Sbi-Z8-jiR" eventType="touchUpInside" id="0Gf-Db-3l1"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="T74-Ce-s0m"/>
