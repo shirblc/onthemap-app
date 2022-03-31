@@ -22,6 +22,7 @@ class LinkPostViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.geocodeUserLocation()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(redirectToMapView))
     }
     
     // geocodeUserLocation
@@ -78,18 +79,27 @@ class LinkPostViewController: UIViewController {
         // create the new StudentInformation object and send it to the server
         let userLocation = StudentInformation(objectId: "", uniqueKey: String(self.apiClient.userKey!), firstName: self.appDataHandler.currentUser!.userFirstName, lastName: self.appDataHandler.currentUser!.userLastName, mapString: self.userLocationStr, mediaURL: self.linkTextFIeld.text ?? "", latitude: Float(locationCoords.coordinate.latitude), longitude: Float(locationCoords.coordinate.longitude), createdAt: currentDateTime, updatedAt: currentDateTime)
         
-        self.appDataHandler.createUserLocation(newLocation: userLocation, successCallback: self.redirectToMapView, errorCallback: self.showErrorAlert(errorStr:))
+        self.appDataHandler.createUserLocation(newLocation: userLocation, successCallback: self.setupMapControllerAndRedirect, errorCallback: self.showErrorAlert(errorStr:))
     }
     
-    // redirectToMapView
-    // Upon successfully posting the data, returns the user to the map view
-    func redirectToMapView() {
+    // setupMapControllerAndRedirect
+    // Upon successfully posting the data, adjusts the map to show the user's location and returns the user to the map view
+    func setupMapControllerAndRedirect() {
         DispatchQueue.main.async {
             let tabBarController = self.navigationController?.viewControllers[1] as! UITabBarController
             let mapViewController = tabBarController.viewControllers?[0] as! MapViewController
             // set the region of the map to the area of the user
             mapViewController.mapView?.setRegion(MKCoordinateRegion(center: self.userLocation!.coordinate, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(0.5), longitudeDelta: CLLocationDegrees(0.5))), animated: true)
-            // navigate back to the tab bar controller
+        }
+        
+        self.redirectToMapView()
+    }
+    
+    // redirectToMapView
+    // Redirects the user back to the tab bar controller
+    @objc func redirectToMapView() {
+        DispatchQueue.main.async {
+            let tabBarController = self.navigationController?.viewControllers[1] as! UITabBarController
             self.navigationController?.popToViewController(tabBarController, animated: true)
         }
     }
