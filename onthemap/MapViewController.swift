@@ -19,25 +19,15 @@ class MapViewController: StudentsViewsBaseClass, MKMapViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.mapView?.delegate = self
-        self.appDataHandler.fetchStudentLocations(successCallback: self.addStudentLocationsToMap(locations:), errorCallback: self.showErrorAlert(errorStr:))
+        self.appDataHandler.fetchStudentLocations(successCallback: self.addStudentLocationsToMap, errorCallback: self.showErrorAlert(errorStr:))
     }
     
     // MARK: User Locations Methods
     // addStudentLocationsToMap
     // Creates the location annotation objects and adds them to the map
-    func addStudentLocationsToMap(locations: Array<StudentInformation>) {
-        var locationAnnotations: Array<MKPointAnnotation> = []
-
-        for studentLocation in locations {
-            let locationAnnotation = MKPointAnnotation()
-            locationAnnotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(studentLocation.latitude), longitude: CLLocationDegrees(studentLocation.longitude))
-            locationAnnotation.title = "\(studentLocation.firstName) \(studentLocation.lastName)"
-            locationAnnotation.subtitle = studentLocation.mediaURL
-            locationAnnotations.append(locationAnnotation)
-        }
-        
+    func addStudentLocationsToMap() {
         DispatchQueue.main.async {
-            self.mapView?.addAnnotations(locationAnnotations)
+            self.mapView?.addAnnotations(self.appDataHandler.studentLocationsAnnotations)
         }
     }
     

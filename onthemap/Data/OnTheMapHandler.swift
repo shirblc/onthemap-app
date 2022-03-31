@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 class OnTheMapHandler {
     static var sharedHandler = OnTheMapHandler()
@@ -13,12 +14,29 @@ class OnTheMapHandler {
     var currentUser: CurrentUser?
     let apiClient = APIClient.sharedClient
     
+    // the converts the data array to an annotation array
+    var studentLocationsAnnotations: Array<MKPointAnnotation> {
+        var locationAnnotations: Array<MKPointAnnotation> = []
+        
+        if let studentLocations = self.studentLocations {
+            for studentLocation in studentLocations {
+                let locationAnnotation = MKPointAnnotation()
+                locationAnnotation.coordinate = CLLocationCoordinate2D(latitude: CLLocationDegrees(studentLocation.latitude), longitude: CLLocationDegrees(studentLocation.longitude))
+                locationAnnotation.title = "\(studentLocation.firstName) \(studentLocation.lastName)"
+                locationAnnotation.subtitle = studentLocation.mediaURL
+                locationAnnotations.append(locationAnnotation)
+            }
+        }
+        
+        return locationAnnotations
+    }
+    
     private init() { }
     
     // MARK: StudentLocation Methods
     // fetchStudentLocations
     // Fetches student locations from the server
-    func fetchStudentLocations(successCallback: @escaping ([StudentInformation]) -> Void, errorCallback: @escaping (String) -> Void) {
+    func fetchStudentLocations(successCallback: @escaping () -> Void, errorCallback: @escaping (String) -> Void) {
         // Fetch student locations from the API
         self.apiClient.createAndExecuteTask(endpoint: .GetStudentLocation(limit: nil, skip: nil, order: "-updatedAt", uniqueKey: nil), requestBody: nil, successHandler: { responseData in
             // otherwise try to decode the data to an object
@@ -26,7 +44,7 @@ class OnTheMapHandler {
                 let studentLocations = try JSONDecoder().decode(StudentInformationArray.self, from: responseData)
 
                 self.studentLocations = studentLocations.results
-                successCallback(studentLocations.results)
+                successCallback()
             // if there's a problem, alert the user
             } catch {
                 errorCallback(error.localizedDescription)
