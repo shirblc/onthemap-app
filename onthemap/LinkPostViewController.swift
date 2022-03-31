@@ -21,12 +21,12 @@ class LinkPostViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.geocodeUserLocatiom()
+        self.geocodeUserLocation()
     }
     
-    // geocodeUserLocatiom
+    // geocodeUserLocation
     // Geocodes the given location and adjusts the map to show it
-    func geocodeUserLocatiom() {
+    func geocodeUserLocation() {
         geocoder.geocodeAddressString(self.userLocationStr, completionHandler: { placemark, error in
             guard error == nil, let placemark = placemark else {
                 self.showErrorAlert(errorStr: error!.localizedDescription)
