@@ -11,7 +11,8 @@ import CoreLocation
 import MapKit
 
 class LinkPostViewController: UIViewController {
-    var userLocation: String!
+    var userLocationStr: String!
+    var userLocation: CLLocation?
     let geocoder = CLGeocoder()
     @IBOutlet weak var linkTextFIeld: UITextField!
     @IBOutlet weak var userLocationMap: MKMapView!
@@ -24,7 +25,7 @@ class LinkPostViewController: UIViewController {
     // geocodeUserLocatiom
     // Geocodes the given location and adjusts the map to show it
     func geocodeUserLocatiom() {
-        geocoder.geocodeAddressString(self.userLocation, completionHandler: { placemark, error in
+        geocoder.geocodeAddressString(self.userLocationStr, completionHandler: { placemark, error in
             guard error == nil, let placemark = placemark else {
                 self.showErrorAlert(errorStr: error!.localizedDescription)
                 return
@@ -34,6 +35,8 @@ class LinkPostViewController: UIViewController {
                 self.showErrorAlert(errorStr: "There is no location associated with that name")
                 return
             }
+            
+            self.userLocation = placemark[0].location
             
             // Generate the annotation for the map
             let locationAnnotation = MKPointAnnotation()

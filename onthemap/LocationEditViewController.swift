@@ -23,7 +23,7 @@ class LocationEditViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "enterLinkSegue" {
             let linkEditViewController = segue.destination as! LinkPostViewController
-            linkEditViewController.userLocation = self.locationText
+            linkEditViewController.userLocationStr = self.locationText
         }
     }
     
