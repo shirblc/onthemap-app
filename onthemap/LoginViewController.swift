@@ -37,7 +37,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let requestBody = "{\"udacity\": { \"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         
         // Try to login
-        self.apiClient.createAndExecuteTask(endpoint: .LogIn, requestBody: requestBody, successHandler: self.handleSuccessfulLogin(responseData:), errorHandler: self.handleLoginError(errorStr:))
+        self.apiClient.createAndExecuteTask(endpoint: .LogIn, requestBody: requestBody.data(using: .utf8), successHandler: self.handleSuccessfulLogin(responseData:), errorHandler: self.handleLoginError(errorStr:))
     }
 
     // handleSuccessfulLogin

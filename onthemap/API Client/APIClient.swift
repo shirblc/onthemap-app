@@ -56,7 +56,7 @@ class APIClient {
     // MARK: Generic Data Task Methods
     // getUrlRequest
     // Gets the URLRequest object
-    func getUrlRequest(endpoint: apiEndpoints, requestBody: String?) throws -> URLRequest {
+    func getUrlRequest(endpoint: apiEndpoints, requestBody: Data?) throws -> URLRequest {
         let requestUrlComponents = endpoint.requestUrl
         
         // Make sure it's a valid URL
@@ -87,7 +87,7 @@ class APIClient {
         }
         
         if let requestBody = requestBody {
-            urlRequest.httpBody = requestBody.data(using: .utf8)
+            urlRequest.httpBody = requestBody
         }
         
         return urlRequest
@@ -121,7 +121,7 @@ class APIClient {
     
     // createAndExecuteTask
     // Shortcut method for creating the URLRequest for the data task and executing it
-    func createAndExecuteTask(endpoint: apiEndpoints, requestBody: String?, successHandler: @escaping (Data) -> Void, errorHandler: @escaping (String) -> Void) {
+    func createAndExecuteTask(endpoint: apiEndpoints, requestBody: Data?, successHandler: @escaping (Data) -> Void, errorHandler: @escaping (String) -> Void) {
         do {
             let urlRequest = try self.getUrlRequest(endpoint: endpoint, requestBody: requestBody)
             self.executeDataTask(url: urlRequest, successHandler: successHandler, errorHandler: errorHandler)
