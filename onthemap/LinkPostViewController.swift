@@ -101,6 +101,7 @@ class LinkPostViewController: UIViewController {
             let mapViewController = tabBarController.viewControllers?[0] as! MapViewController
             // set the region of the map to the area of the user
             mapViewController.mapView?.setRegion(MKCoordinateRegion(center: self.userLocation!.coordinate, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(0.5), longitudeDelta: CLLocationDegrees(0.5))), animated: true)
+            mapViewController.addStudentLocationsToMap()
         }
         
         self.redirectToMapView()
