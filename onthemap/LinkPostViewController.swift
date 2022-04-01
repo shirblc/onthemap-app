@@ -18,6 +18,8 @@ class LinkPostViewController: UIViewController {
     let appDataHandler = OnTheMapHandler.sharedHandler
     @IBOutlet weak var linkTextFIeld: UITextField!
     @IBOutlet weak var userLocationMap: MKMapView!
+    @IBOutlet weak var submitButton: UIButton!
+    @IBOutlet weak var linkPostActivityIndicator: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +50,9 @@ class LinkPostViewController: UIViewController {
             
             // Set the map centre to the given location and add the annotation
             DispatchQueue.main.async {
+                self.linkPostActivityIndicator.stopAnimating()
+                self.submitButton.isEnabled = true
+                self.userLocationMap.alpha = 1
                 self.userLocationMap.setRegion(MKCoordinateRegion(center: placemarkLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: CLLocationDegrees(0.5), longitudeDelta: CLLocationDegrees(0.5))), animated: true)
                 self.userLocationMap.addAnnotation(locationAnnotation)
             }
@@ -58,6 +63,7 @@ class LinkPostViewController: UIViewController {
     // Displays an alert controller with the given error message
     func showErrorAlert(errorStr: String) {
         DispatchQueue.main.async {
+            self.linkPostActivityIndicator.stopAnimating()
             let errorAlert = UIAlertController(title: "An Error Occurred", message: "There was a problem locaing you: \(errorStr). Please try again.", preferredStyle: .alert)
             errorAlert.addAction(UIAlertAction(title: "OK", style: .default, handler: { action in
                 self.dismiss(animated: true, completion: nil)
@@ -79,6 +85,10 @@ class LinkPostViewController: UIViewController {
         // create the new StudentInformation object and send it to the server
         let userLocation = StudentInformation(objectId: "", uniqueKey: String(self.apiClient.userKey!), firstName: self.appDataHandler.currentUser!.userFirstName, lastName: self.appDataHandler.currentUser!.userLastName, mapString: self.userLocationStr, mediaURL: self.linkTextFIeld.text ?? "", latitude: Float(locationCoords.coordinate.latitude), longitude: Float(locationCoords.coordinate.longitude), createdAt: currentDateTime, updatedAt: currentDateTime)
         
+        DispatchQueue.main.async {
+            self.linkPostActivityIndicator.startAnimating()
+        }
+        
         self.appDataHandler.createUserLocation(newLocation: userLocation, successCallback: self.setupMapControllerAndRedirect, errorCallback: self.showErrorAlert(errorStr:))
     }
     
@@ -86,6 +96,7 @@ class LinkPostViewController: UIViewController {
     // Upon successfully posting the data, adjusts the map to show the user's location and returns the user to the map view
     func setupMapControllerAndRedirect() {
         DispatchQueue.main.async {
+            self.linkPostActivityIndicator.stopAnimating()
             let tabBarController = self.navigationController?.viewControllers[1] as! UITabBarController
             let mapViewController = tabBarController.viewControllers?[0] as! MapViewController
             // set the region of the map to the area of the user
