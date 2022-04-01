@@ -31,6 +31,14 @@ The project currently contains five ViewControllers, with six custom classes:
 5. **LocationEditViewController** - The initial view controller for posting a location. Allows the user to enter their location in string form.
 6. **LinkPostViewController** - The second view controller for posting a location. Gets a location for the user based on their string input and allows them to add a link before sending the data to the server.
 
+The project also contains the following non-view-related files:
+
+1. **OnTheMapHandler.swift** - Shared data handler for the app. Contains methods related to getting and posting user locations and fetching user data, as well as persistent user and location data used throughout the app.
+2. **StudentInformation.swift** - Contains the structs for StudentInformation and StudentInformationArray (the response from the GET endpoint).
+3. **CurrentUser.swift** - Contains the struct with the currently logged in user's data.
+4. **APIClient.swift** - Shared API Client for the app. Contains methods for interacting with the API, parsing JSON responses and parsing errors. Also contains an APIClientError struct.
+5. **APIEndpoints.swift** - Contains the enum and extension of the API endpoints.
+
 ## Known Issues
 
 There are no current issues at the time.
