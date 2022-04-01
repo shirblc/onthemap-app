@@ -74,6 +74,9 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="arw-AJ-77q">
+                                <rect key="frame" x="169" y="509.66666666666674" width="37" height="37"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -82,9 +85,11 @@
                             <constraint firstItem="hQx-93-tHh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="24" id="2cj-Ak-3Ft"/>
                             <constraint firstItem="VfJ-q8-cA8" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="4H5-0Y-LP6"/>
                             <constraint firstItem="nC9-HO-UIh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="94y-Fj-tzc"/>
+                            <constraint firstItem="arw-AJ-77q" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Apw-k6-KKQ"/>
                             <constraint firstItem="BwN-AD-5Kf" firstAttribute="top" secondItem="VfJ-q8-cA8" secondAttribute="bottom" constant="24" id="Npr-bs-MQu"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nC9-HO-UIh" secondAttribute="trailing" constant="50" id="Oor-my-fCS"/>
                             <constraint firstItem="nC9-HO-UIh" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Zya-zg-MHl"/>
+                            <constraint firstItem="arw-AJ-77q" firstAttribute="top" secondItem="nC9-HO-UIh" secondAttribute="bottom" constant="50" id="bWV-Lh-UlO"/>
                             <constraint firstItem="BwN-AD-5Kf" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cDx-n3-310"/>
                             <constraint firstItem="eEL-XF-cxj" firstAttribute="top" secondItem="BwN-AD-5Kf" secondAttribute="bottom" constant="24" id="igY-fD-1j2"/>
                             <constraint firstItem="eEL-XF-cxj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="kY6-n8-5Al"/>
@@ -95,6 +100,7 @@
                     <navigationItem key="navigationItem" id="d8N-UL-bXr"/>
                     <connections>
                         <outlet property="errorTextLabel" destination="nC9-HO-UIh" id="BjB-QH-hW0"/>
+                        <outlet property="loginActivityIndicator" destination="arw-AJ-77q" id="ssm-SL-F76"/>
                         <outlet property="passwordTextField" destination="BwN-AD-5Kf" id="3Ir-PA-D8q"/>
                         <outlet property="usernameTextFIeld" destination="VfJ-q8-cA8" id="qJb-dJ-mC6"/>
                         <segue destination="hbG-07-I7w" kind="show" identifier="continueToAppSegue" id="vPK-Ot-swF"/>

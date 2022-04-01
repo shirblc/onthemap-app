@@ -16,7 +16,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var usernameTextFIeld: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorTextLabel: UILabel!
-
+    @IBOutlet weak var loginActivityIndicator: UIActivityIndicatorView!
+    
     // MARK: Lifecycle Methods
     override func viewWillAppear(_ animated: Bool) {
         self.errorTextLabel.text = ""
@@ -36,6 +37,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         let password = passwordTextField.text!
         let requestBody = "{\"udacity\": { \"username\": \"\(username)\", \"password\": \"\(password)\"}}"
         
+        DispatchQueue.main.async {
+            self.loginActivityIndicator.startAnimating()
+        }
+        
         // Try to login
         self.apiClient.createAndExecuteTask(endpoint: .LogIn, requestBody: requestBody.data(using: .utf8), successHandler: self.handleSuccessfulLogin(responseData:), errorHandler: self.handleLoginError(errorStr:))
     }
@@ -53,6 +58,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         // send the user to the next view
         DispatchQueue.main.async {
+            self.loginActivityIndicator.stopAnimating()
             self.performSegue(withIdentifier: "continueToAppSegue", sender: nil)
         }
     }
@@ -61,6 +67,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     // Alerts the user there was an issue logging in
     func handleLoginError(errorStr: String) {
         DispatchQueue.main.async {
+            self.loginActivityIndicator.stopAnimating()
             self.errorTextLabel.text = errorStr
         }
     }
